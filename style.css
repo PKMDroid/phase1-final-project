@@ -1,0 +1,347 @@
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+  overflow-x: hidden; /* Prevent horizontal scroll bleed */
+  position: relative;
+}
+
+.error-message, .quota-info {
+  position: fixed;
+  top: 80px; /* Below header */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.error-message {
+  background: rgba(255, 0, 0, 0.8);
+  color: white;
+}
+
+.quota-info {
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+}
+
+/* Fixed Top Panel (White Overlay with Blur) */
+.fixed-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.95); /* Semi-transparent white */
+  backdrop-filter: blur(10px); /* Blur effect over content below */
+  -webkit-backdrop-filter: blur(10px); /* Safari fallback */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  z-index: 10000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.categories-nav ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  padding: 10px 15px;
+  border-radius: 20px;
+  transition: background 0.3s;
+}
+
+.nav-link:hover, .nav-link.active {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.signup-btn {
+  background: #000;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.signup-btn:hover {
+  background: #333;
+}
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin-top: 60px; /* Account for fixed header */
+}
+
+.main-story {
+  position: relative;
+  width: 60%;
+  max-width: 800px;
+  height: 70%;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.main-story img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.main-story h1 {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  font-size: 2.5em;
+  z-index: 11;
+}
+
+.main-story p {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  font-size: 1.2em;
+}
+
+/* Peeking Stories (Behind Hero) */
+.peek-stories {
+  position: absolute;
+  bottom: -50px; /* Peek from behind */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  z-index: 5;
+}
+
+.peek-item {
+  width: 150px;
+  height: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s;
+}
+
+.peek-item:hover {
+  transform: scale(1.05);
+}
+
+.peek-item img {
+  width: 100%;
+  height: 70%;
+  object-fit: cover;
+}
+
+.peek-item h3 {
+  padding: 10px;
+  font-size: 0.9em;
+  text-align: center;
+  background: white;
+}
+
+/* Categories Container */
+.categories-container {
+  margin-top: 60px; /* Space after hero */
+  padding: 40px 20px;
+}
+
+.category-section {
+  margin-bottom: 60px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.category-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.category-section h2 {
+  font-size: 2.5em;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #000;
+}
+
+.horizontal-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 20px 0;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none; /* Hide scrollbar */
+}
+
+.horizontal-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.story-card {
+  flex: 0 0 200px; /* Small portrait */
+  height: 300px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  scroll-snap-align: start;
+}
+
+.story-card:hover {
+  transform: scale(1.02);
+}
+
+.story-card img {
+  width: 100%;
+  height: 60%; /* Portrait focus */
+  object-fit: cover;
+}
+
+.story-card p {
+  padding: 10px;
+  font-size: 0.9em;
+  font-weight: bold;
+  height: 40%; /* Space for title */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.story-card small {
+  display: block;
+  padding: 0 10px;
+  font-size: 0.8em;
+  color: #666;
+}
+
+/* Expanded Story Card */
+.story-card.expanded {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  width: 90%;
+  height: 90%;
+  z-index: 10001;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  animation: expand 0.4s ease;
+}
+
+@keyframes expand {
+  from { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+  to { transform: translate(-50%, -50%) scale(0.9); opacity: 1; }
+}
+
+.story-card.expanded img {
+  width: 100%;
+  height: 50%;
+  object-fit: cover;
+  position: relative;
+}
+
+.story-card.expanded::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7); /* Dark overlay for text readability */
+  z-index: 1;
+}
+
+.story-card.expanded .content {
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+  color: white;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.story-card.expanded h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.story-card.expanded p {
+  font-size: 1.1em;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.story-card.expanded small {
+  color: #ccc;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .fixed-panel {
+    padding: 0 10px;
+    height: 50px;
+  }
+  .categories-nav ul {
+    gap: 10px;
+  }
+  .nav-link {
+    padding: 5px 10px;
+    font-size: 0.9em;
+  }
+  .hero-section {
+    height: 60vh;
+    margin-top: 50px;
+  }
+  .main-story {
+    width: 90%;
+    height: 60%;
+  }
+  .main-story h1 {
+    font-size: 1.8em;
+  }
+  .story-card {
+    flex: 0 0 150px;
+    height: 250px;
+  }
+  .story-card.expanded {
+    width: 95%;
+    height: 95%;
+  }
+}

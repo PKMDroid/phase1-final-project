@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NewsFlow - Top Stories</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Fixed Top Panel (White Overlay with Categories & Signup) -->
+  <header id="top-panel" class="fixed-panel">
+    <nav class="categories-nav">
+      <ul>
+        <li><a href="#general" class="nav-link active">General</a></li>
+        <li><a href="#technology" class="nav-link">Technology</a></li>
+        <li><a href="#sports" class="nav-link">Sports</a></li>
+        <li><a href="#entertainment" class="nav-link">Entertainment</a></li>
+        <li><a href="#business" class="nav-link">Business</a></li>
+      </ul>
+    </nav>
+    <button id="signup-btn" class="signup-btn">Sign Up</button>
+  </header>
+
+  <!-- Error/Quota Display -->
+  <div id="error" class="error-message"></div>
+  <div id="quota-info" class="quota-info"></div>
+
+  <!-- Hero Section -->
+  <section id="hero-section" class="hero-section">
+    <div id="main-story" class="main-story">
+      <!-- Loaded dynamically -->
+    </div>
+    <div id="peek-stories" class="peek-stories">
+      <!-- Loaded dynamically -->
+    </div>
+  </section>
+
+  <!-- Categories Sections -->
+  <div id="categories-container" class="categories-container">
+    <!-- Loaded dynamically -->
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
