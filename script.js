@@ -1,4 +1,4 @@
-// API Config (Replace with your free key from newsapi.org)
+// API Config 
 const API_KEY = "2b66189a28124f20aaddc182f229985d"; 
 const API_BASE = "https://newsapi.org/v2/top-headlines?country=us&pageSize=100&apiKey=";
 const DEFAULT_IMAGE = "https://via.placeholder.com/800x400?text=No+Image";
